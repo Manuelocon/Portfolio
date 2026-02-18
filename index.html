@@ -3,495 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manuel O. — Desarrollador Mobile & Cloud</title>
-    <meta name="description" content="Portfolio de desarrollador especializado en aplicaciones móviles con React Native y arquitectura cloud con AWS.">
+    <title>Manuel O. — Software Developer | .NET, AWS, React</title>
+    <meta name="description" content="Portfolio de desarrollador de software con más de 10 años de experiencia en .NET, AWS, SQL Server, Angular y React.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        *, *::before, *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
-            --bg-primary: #0d1117;
-            --bg-card: #161b22;
-            --border: #30363d;
-            --text-primary: #e6edf3;
-            --text-secondary: #8b949e;
-            --accent-blue: #58a6ff;
-            --accent-purple: #bc8cff;
+            --bg-primary: #0d1117; --bg-card: #161b22; --border: #30363d;
+            --text-primary: #e6edf3; --text-secondary: #8b949e;
+            --accent-blue: #58a6ff; --accent-purple: #bc8cff;
             --accent-gradient: linear-gradient(135deg, #58a6ff, #bc8cff);
         }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background-color: var(--bg-primary);
-            color: var(--text-primary);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* NAV */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 100;
-            background: rgba(13, 17, 23, 0.85);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border);
-            padding: 0 1.5rem;
-        }
-
-        .nav-inner {
-            max-width: 1100px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            height: 60px;
-        }
-
-        .nav-logo {
-            font-weight: 700;
-            font-size: 1.15rem;
-            background: var(--accent-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 1.75rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 0.875rem;
-            font-weight: 500;
-            transition: color 0.25s;
-        }
-
-        .nav-links a:hover,
-        .nav-links a.active {
-            color: var(--text-primary);
-        }
-
-        .nav-toggle {
-            display: none;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 0.5rem;
-        }
-
-        .nav-toggle span {
-            display: block;
-            width: 22px;
-            height: 2px;
-            background: var(--text-primary);
-            margin: 5px 0;
-            transition: transform 0.3s, opacity 0.3s;
-        }
-
-        /* SECTIONS */
-        section {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 6rem 1.5rem;
-        }
-
-        .section-label {
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            background: var(--accent-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 0.75rem;
-        }
-
-        .section-title {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            line-height: 1.2;
-        }
-
-        /* HERO */
-        #hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding-top: 60px;
-        }
-
-        .hero-content {
-            max-width: 680px;
-        }
-
-        .hero-greeting {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            margin-bottom: 0.75rem;
-            font-weight: 400;
-        }
-
-        .hero-name {
-            font-size: clamp(2.5rem, 6vw, 4rem);
-            font-weight: 700;
-            line-height: 1.1;
-            margin-bottom: 1rem;
-        }
-
-        .hero-name .gradient {
-            background: var(--accent-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero-tagline {
-            font-size: 1.2rem;
-            color: var(--text-secondary);
-            max-width: 520px;
-            margin-bottom: 2rem;
-            line-height: 1.7;
-        }
-
-        .hero-cta {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.75rem 1.75rem;
-            background: var(--accent-gradient);
-            color: var(--bg-primary);
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 0.95rem;
-            transition: opacity 0.25s, transform 0.25s;
-        }
-
-        .hero-cta:hover {
-            opacity: 0.9;
-            transform: translateY(-1px);
-        }
-
-        /* ABOUT */
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-        }
-
-        .about-text {
-            color: var(--text-secondary);
-            font-size: 1.05rem;
-            line-height: 1.8;
-        }
-
-        .about-text p + p {
-            margin-top: 1rem;
-        }
-
-        /* TECH STACK */
-        .tech-categories {
-            display: flex;
-            flex-direction: column;
-            gap: 2.5rem;
-        }
-
-        .tech-category h3 {
-            font-size: 1rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: var(--text-secondary);
-        }
-
-        .tech-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.75rem;
-        }
-
-        .tech-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.6rem 1rem;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            color: var(--text-primary);
-            transition: border-color 0.25s, transform 0.25s;
-        }
-
-        .tech-badge:hover {
-            border-color: var(--accent-blue);
-            transform: translateY(-2px);
-        }
-
-        .tech-badge svg {
-            width: 18px;
-            height: 18px;
-            flex-shrink: 0;
-        }
-
-        /* PROJECTS */
-        .project-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 2.5rem;
-            transition: border-color 0.3s;
-        }
-
-        .project-card:hover {
-            border-color: var(--accent-blue);
-        }
-
-        .project-header {
-            display: flex;
-            align-items: flex-start;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-bottom: 1.25rem;
-        }
-
-        .project-name {
-            font-size: 1.5rem;
-            font-weight: 700;
-        }
-
-        .project-type {
-            font-size: 0.8rem;
-            font-weight: 500;
-            padding: 0.3rem 0.75rem;
-            background: rgba(88, 166, 255, 0.1);
-            color: var(--accent-blue);
-            border-radius: 20px;
-            white-space: nowrap;
-        }
-
-        .project-desc {
-            color: var(--text-secondary);
-            font-size: 1rem;
-            line-height: 1.7;
-            margin-bottom: 1.5rem;
-        }
-
-        .project-features {
-            list-style: none;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 0.6rem;
-            margin-bottom: 2rem;
-        }
-
-        .project-features li {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-        }
-
-        .project-features li::before {
-            content: '';
-            display: inline-block;
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: var(--accent-gradient);
-            flex-shrink: 0;
-        }
-
-        .project-tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .project-tech-tag {
-            font-size: 0.75rem;
-            font-weight: 500;
-            padding: 0.3rem 0.7rem;
-            background: rgba(188, 140, 255, 0.08);
-            color: var(--accent-purple);
-            border: 1px solid rgba(188, 140, 255, 0.15);
-            border-radius: 6px;
-        }
-
-        .project-links {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .google-play-badge {
-            height: 50px;
-            transition: opacity 0.25s;
-        }
-
-        .google-play-badge:hover {
-            opacity: 0.85;
-        }
-
-        /* CONTACT */
-        .contact-text {
-            color: var(--text-secondary);
-            font-size: 1.05rem;
-            line-height: 1.8;
-            margin-bottom: 2rem;
-            max-width: 560px;
-        }
-
-        .contact-links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .contact-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.6rem;
-            padding: 0.75rem 1.5rem;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            color: var(--text-primary);
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: border-color 0.25s, transform 0.25s;
-        }
-
-        .contact-link:hover {
-            border-color: var(--accent-blue);
-            transform: translateY(-2px);
-        }
-
-        .contact-link svg {
-            width: 20px;
-            height: 20px;
-        }
-
-        /* FOOTER */
-        footer {
-            border-top: 1px solid var(--border);
-            padding: 2rem 1.5rem;
-            text-align: center;
-        }
-
-        .footer-inner {
-            max-width: 1100px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .footer-copy {
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-        }
-
-        .footer-link {
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-            text-decoration: none;
-            transition: color 0.25s;
-        }
-
-        .footer-link:hover {
-            color: var(--text-primary);
-        }
-
-        /* ANIMATIONS */
-        .fade-up {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.7s ease, transform 0.7s ease;
-        }
-
-        .fade-up.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* RESPONSIVE */
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background-color: var(--bg-primary); color: var(--text-primary); line-height: 1.6; overflow-x: hidden; }
+        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(13, 17, 23, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 0 1.5rem; }
+        .nav-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 60px; }
+        .nav-logo { font-weight: 700; font-size: 1.15rem; background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .nav-links { display: flex; gap: 1.75rem; list-style: none; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.875rem; font-weight: 500; transition: color 0.25s; }
+        .nav-links a:hover, .nav-links a.active { color: var(--text-primary); }
+        .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; }
+        .nav-toggle span { display: block; width: 22px; height: 2px; background: var(--text-primary); margin: 5px 0; transition: transform 0.3s, opacity 0.3s; }
+        section { max-width: 1100px; margin: 0 auto; padding: 6rem 1.5rem; }
+        .section-label { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em; background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 0.75rem; }
+        .section-title { font-size: 2rem; font-weight: 700; margin-bottom: 1.5rem; line-height: 1.2; }
+        #hero { min-height: 100vh; display: flex; align-items: center; padding-top: 60px; }
+        .hero-content { max-width: 680px; }
+        .hero-greeting { font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 0.75rem; font-weight: 400; }
+        .hero-name { font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 700; line-height: 1.1; margin-bottom: 1rem; }
+        .hero-name .gradient { background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .hero-tagline { font-size: 1.2rem; color: var(--text-secondary); max-width: 520px; margin-bottom: 2rem; line-height: 1.7; }
+        .hero-cta { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.75rem; background: var(--accent-gradient); color: var(--bg-primary); text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 0.95rem; transition: opacity 0.25s, transform 0.25s; }
+        .hero-cta:hover { opacity: 0.9; transform: translateY(-1px); }
+        .about-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; }
+        .about-text { color: var(--text-secondary); font-size: 1.05rem; line-height: 1.8; }
+        .about-text p + p { margin-top: 1rem; }
+        .tech-categories { display: flex; flex-direction: column; gap: 2.5rem; }
+        .tech-category h3 { font-size: 1rem; font-weight: 600; margin-bottom: 1rem; color: var(--text-secondary); }
+        .tech-grid { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+        .tech-badge { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.6rem 1rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; font-size: 0.85rem; font-weight: 500; color: var(--text-primary); transition: border-color 0.25s, transform 0.25s; }
+        .tech-badge:hover { border-color: var(--accent-blue); transform: translateY(-2px); }
+        .tech-badge .icon { width: 18px; height: 18px; flex-shrink: 0; border-radius: 3px; }
+        .experience-list { display: flex; flex-direction: column; gap: 0; position: relative; }
+        .experience-list::before { content: ''; position: absolute; left: 15px; top: 8px; bottom: 8px; width: 2px; background: var(--border); }
+        .experience-item { display: flex; gap: 1.5rem; padding: 1.5rem 0; position: relative; }
+        .experience-item:first-child { padding-top: 0; }
+        .experience-item:last-child { padding-bottom: 0; }
+        .experience-dot { width: 32px; height: 32px; min-width: 32px; border-radius: 50%; background: var(--bg-card); border: 2px solid var(--accent-blue); display: flex; align-items: center; justify-content: center; z-index: 1; margin-top: 2px; }
+        .experience-dot-inner { width: 10px; height: 10px; border-radius: 50%; background: var(--accent-gradient); }
+        .experience-content { flex: 1; }
+        .experience-role { font-size: 1.15rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.25rem; }
+        .experience-company { font-size: 0.95rem; color: var(--accent-blue); font-weight: 500; margin-bottom: 0.35rem; }
+        .experience-duration { font-size: 0.8rem; color: var(--text-secondary); font-weight: 500; padding: 0.2rem 0.6rem; background: rgba(88, 166, 255, 0.08); border-radius: 12px; display: inline-block; margin-bottom: 0.5rem; }
+        .experience-desc { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7; }
+        .project-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 2.5rem; transition: border-color 0.3s; }
+        .project-card:hover { border-color: var(--accent-blue); }
+        .project-header { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.25rem; }
+        .project-name { font-size: 1.5rem; font-weight: 700; }
+        .project-type { font-size: 0.8rem; font-weight: 500; padding: 0.3rem 0.75rem; background: rgba(88, 166, 255, 0.1); color: var(--accent-blue); border-radius: 20px; white-space: nowrap; }
+        .project-desc { color: var(--text-secondary); font-size: 1rem; line-height: 1.7; margin-bottom: 1.5rem; }
+        .project-features { list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.6rem; margin-bottom: 2rem; }
+        .project-features li { display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; color: var(--text-secondary); }
+        .project-features li::before { content: ''; display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--accent-gradient); flex-shrink: 0; }
+        .project-tech { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem; }
+        .project-tech-tag { font-size: 0.75rem; font-weight: 500; padding: 0.3rem 0.7rem; background: rgba(188, 140, 255, 0.08); color: var(--accent-purple); border: 1px solid rgba(188, 140, 255, 0.15); border-radius: 6px; }
+        .project-links { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+        .google-play-badge { height: 50px; transition: opacity 0.25s; }
+        .google-play-badge:hover { opacity: 0.85; }
+        .contact-text { color: var(--text-secondary); font-size: 1.05rem; line-height: 1.8; margin-bottom: 2rem; max-width: 560px; }
+        .contact-links { display: flex; flex-wrap: wrap; gap: 1rem; }
+        .contact-link { display: inline-flex; align-items: center; gap: 0.6rem; padding: 0.75rem 1.5rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; color: var(--text-primary); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: border-color 0.25s, transform 0.25s; }
+        .contact-link:hover { border-color: var(--accent-blue); transform: translateY(-2px); }
+        .contact-link svg { width: 20px; height: 20px; }
+        footer { border-top: 1px solid var(--border); padding: 2rem 1.5rem; text-align: center; }
+        .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+        .footer-copy { font-size: 0.8rem; color: var(--text-secondary); }
+        .footer-link { font-size: 0.8rem; color: var(--text-secondary); text-decoration: none; transition: color 0.25s; }
+        .footer-link:hover { color: var(--text-primary); }
+        .fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
         @media (max-width: 768px) {
-            section {
-                padding: 4rem 1.25rem;
-            }
-
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 60px;
-                left: 0;
-                right: 0;
-                flex-direction: column;
-                background: rgba(13, 17, 23, 0.97);
-                padding: 1.5rem;
-                gap: 1.25rem;
-                border-bottom: 1px solid var(--border);
-            }
-
-            .nav-links.open {
-                display: flex;
-            }
-
-            .nav-toggle {
-                display: block;
-            }
-
-            .nav-toggle.active span:nth-child(1) {
-                transform: rotate(45deg) translate(5px, 5px);
-            }
-
-            .nav-toggle.active span:nth-child(2) {
-                opacity: 0;
-            }
-
-            .nav-toggle.active span:nth-child(3) {
-                transform: rotate(-45deg) translate(5px, -5px);
-            }
-
-            .project-card {
-                padding: 1.5rem;
-            }
-
-            .section-title {
-                font-size: 1.6rem;
-            }
-
-            .footer-inner {
-                flex-direction: column;
-                text-align: center;
-            }
+            section { padding: 4rem 1.25rem; }
+            .nav-links { display: none; position: absolute; top: 60px; left: 0; right: 0; flex-direction: column; background: rgba(13, 17, 23, 0.97); padding: 1.5rem; gap: 1.25rem; border-bottom: 1px solid var(--border); }
+            .nav-links.open { display: flex; }
+            .nav-toggle { display: block; }
+            .nav-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+            .nav-toggle.active span:nth-child(2) { opacity: 0; }
+            .nav-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+            .project-card { padding: 1.5rem; }
+            .section-title { font-size: 1.6rem; }
+            .footer-inner { flex-direction: column; text-align: center; }
+            .experience-item { gap: 1rem; }
         }
     </style>
 </head>
@@ -504,13 +108,12 @@
             <ul class="nav-links" id="navLinks">
                 <li><a href="#about">Sobre mí</a></li>
                 <li><a href="#tech">Tecnologías</a></li>
+                <li><a href="#experience">Experiencia</a></li>
                 <li><a href="#projects">Proyectos</a></li>
                 <li><a href="#contact">Contacto</a></li>
             </ul>
             <button class="nav-toggle" id="navToggle" aria-label="Menú">
-                <span></span>
-                <span></span>
-                <span></span>
+                <span></span><span></span><span></span>
             </button>
         </div>
     </nav>
@@ -520,7 +123,7 @@
         <div class="hero-content fade-up">
             <p class="hero-greeting">Hola, soy</p>
             <h1 class="hero-name">Manuel <span class="gradient">Ocón</span></h1>
-            <p class="hero-tagline">Desarrollador de aplicaciones móviles y soluciones cloud. Creo experiencias digitales que aportan valor real a las personas.</p>
+            <p class="hero-tagline">Desarrollador de software con más de 10 años de experiencia. Entusiasta de la IA y la creación de soluciones digitales que aportan valor real.</p>
             <a href="#projects" class="hero-cta">
                 Ver mis proyectos
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17l9.2-9.2"/><path d="M17 17V7H7"/></svg>
@@ -535,9 +138,8 @@
             <h2 class="section-title">¿Quién soy?</h2>
             <div class="about-grid">
                 <div class="about-text">
-                    <p>Soy un desarrollador apasionado por la tecnología móvil y la arquitectura cloud. Me especializo en construir aplicaciones con React Native y en diseñar backends serverless sobre AWS, buscando siempre soluciones escalables, eficientes y centradas en el usuario.</p>
-                    <p>Mi enfoque combina un desarrollo técnico sólido con una sensibilidad especial por la experiencia de usuario, creando productos que no solo funcionan bien, sino que marcan la diferencia en la vida de las personas.</p>
-                    <!-- TODO: Reemplaza este texto con tu información personal real -->
+                    <p>Soy un desarrollador entusiasta de la <strong style="color:var(--accent-blue)">Inteligencia Artificial</strong> y la creación de software. Me apasiona explorar nuevas ideas y conceptos de aplicaciones, buscando siempre formas innovadoras de resolver problemas reales a través de la tecnología.</p>
+                    <p>Con más de <strong style="color:var(--accent-blue)">10 años de experiencia</strong> en la industria del desarrollo de software, he trabajado extensamente con <strong style="color:var(--accent-purple)">AWS</strong>, <strong style="color:var(--accent-purple)">.NET</strong> y <strong style="color:var(--accent-purple)">SQL Server</strong>, dominando sus ecosistemas completos incluyendo arquitecturas de microservicios y los últimos estándares de calidad. También cuento con experiencia sólida en frontend con <strong style="color:var(--accent-purple)">Angular</strong> y <strong style="color:var(--accent-purple)">React</strong>.</p>
                 </div>
             </div>
         </div>
@@ -550,80 +152,117 @@
             <h2 class="section-title">Herramientas con las que trabajo</h2>
             <div class="tech-categories">
                 <div class="tech-category">
-                    <h3>Frontend Mobile</h3>
+                    <h3>Backend</h3>
                     <div class="tech-grid">
-                        <span class="tech-badge">
-                            <svg viewBox="0 0 24 24" fill="#61DAFB"><path d="M14.23 12.004a2.236 2.236 0 0 1-2.235 2.236 2.236 2.236 0 0 1-2.236-2.236 2.236 2.236 0 0 1 2.235-2.236 2.236 2.236 0 0 1 2.236 2.236zm2.648-10.69c-1.346 0-3.107.96-4.888 2.622-1.78-1.653-3.542-2.602-4.887-2.602-.31 0-.592.063-.846.18C4.9 2.12 4.26 3.88 4.502 6.34c-2.452.726-3.996 1.906-3.996 3.202 0 1.313 1.576 2.52 4.065 3.254-.24 2.43.602 4.157 1.96 4.766.254.12.536.18.846.18 1.346 0 3.107-.96 4.888-2.624 1.78 1.654 3.542 2.604 4.887 2.604.31 0 .592-.064.846-.18 1.358-.61 2.2-2.336 1.96-4.766 2.49-.735 4.065-1.94 4.065-3.254 0-1.296-1.544-2.476-3.996-3.202.242-2.46-.398-4.22-1.756-4.83a1.862 1.862 0 0 0-.846-.18zM16.56 2.77c.877.394 1.32 1.768 1.096 3.766a14.63 14.63 0 0 0-.387-.09c-.34-1.598-.86-3.04-1.534-4.216.3.05.583.14.825.54zm-7.12 0c.242-.4.526-.49.826-.54-.675 1.177-1.195 2.62-1.535 4.218a14.63 14.63 0 0 0-.387.09c-.224-1.998.22-3.372 1.096-3.766zM12 8.01c.816 0 1.6.074 2.344.21-.46.778-.87 1.632-1.217 2.55a10.398 10.398 0 0 0-2.254 0c-.348-.918-.757-1.772-1.217-2.55.744-.136 1.528-.21 2.344-.21zm-3.54.654c.396.807.74 1.694 1.022 2.642a15.863 15.863 0 0 0-2.74.78c.242-1.258.614-2.41 1.088-3.422h.63zm7.08 0h-.63c.474 1.012.846 2.164 1.088 3.422a15.863 15.863 0 0 0-2.74-.78c.282-.948.626-1.835 1.022-2.642h.26zM5.088 10.77c1.358-.432 2.87-.734 4.468-.888.17.608.36 1.198.574 1.764a21.97 21.97 0 0 0-.574 1.766c-1.598-.154-3.11-.456-4.468-.888C3.98 12.12 3.11 11.434 3.11 10.77zm13.824 0c0 .664-.87 1.35-1.978 1.754-1.358.432-2.87.734-4.468.888.17-.608.36-1.198.574-1.764a21.97 21.97 0 0 0 .574-1.766c1.598.154 3.11.456 4.468.888 1.108.404 1.978 1.09 1.978 1.754v-.754zm-8.18 3.63c.744.136 1.528.21 2.344.21s1.6-.074 2.344-.21c-.46.778-.87 1.632-1.217 2.55a10.398 10.398 0 0 1-2.254 0c-.348-.918-.757-1.772-1.217-2.55zm-2.454.566c.282.948.626 1.835 1.022 2.642-.3-.05-.583-.14-.826-.54-.877-.394-1.32-1.768-1.096-3.766.128.03.256.06.387.09l.513 1.574zm9.444 0 .513-1.574c.13-.03.26-.06.387-.09.224 1.998-.22 3.372-1.096 3.766-.242.4-.526.49-.826.54.396-.807.74-1.694 1.022-2.642z"/></svg>
-                            React Native
-                        </span>
-                        <span class="tech-badge">
-                            <svg viewBox="0 0 24 24" fill="#000020"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zm-.8 15.99l-4.478-2.587V8.42l4.478 2.587v4.982zm.8-6.245L7.538 7.16 12 4.575l4.462 2.587L12 9.745zm5.278 3.658l-4.478 2.587V10.99l4.478-2.587v4.998z"/></svg>
-                            Expo
-                        </span>
-                        <span class="tech-badge">
-                            <svg viewBox="0 0 24 24" fill="#3178C6"><path d="M1.125 0C.502 0 0 .502 0 1.125v21.75C0 23.498.502 24 1.125 24h21.75c.623 0 1.125-.502 1.125-1.125V1.125C24 .502 23.498 0 22.875 0zm17.363 9.75c.612 0 1.154.037 1.627.111a6.38 6.38 0 0 1 1.306.34v2.458a3.95 3.95 0 0 0-.643-.361 5.093 5.093 0 0 0-.717-.26 5.453 5.453 0 0 0-1.426-.2c-.3 0-.573.028-.819.086a2.1 2.1 0 0 0-.623.242c-.17.104-.3.229-.393.374a.888.888 0 0 0-.14.49c0 .196.053.373.156.529.104.156.252.304.443.444s.42.276.69.394c.268.118.58.238.934.36a8.36 8.36 0 0 1 1.26.536c.386.21.713.456.979.733.266.279.47.6.611.965.14.365.211.78.211 1.248 0 .547-.104 1.014-.313 1.4-.21.385-.5.7-.873.943-.372.242-.813.416-1.323.518-.51.104-1.06.155-1.65.155-.452 0-.91-.03-1.373-.09a10.166 10.166 0 0 1-1.33-.268v-2.57c.484.34 1 .594 1.55.762.55.17 1.074.255 1.573.255.258 0 .486-.024.682-.072a1.54 1.54 0 0 0 .497-.203.87.87 0 0 0 .306-.341.973.973 0 0 0 .103-.457c0-.22-.069-.413-.206-.578-.137-.165-.33-.316-.576-.453a6.2 6.2 0 0 0-.87-.407 14.78 14.78 0 0 0-1.093-.445 6.42 6.42 0 0 1-1.14-.535 3.381 3.381 0 0 1-.833-.696 2.82 2.82 0 0 1-.512-.944 3.724 3.724 0 0 1-.173-1.178c0-.523.104-.977.313-1.361.21-.385.499-.7.868-.944a4.13 4.13 0 0 1 1.278-.586 5.85 5.85 0 0 1 1.551-.204zM6.29 10.3h5.29v1.77H9.55v7.18H7.53v-7.18H6.29z"/></svg>
-                            TypeScript
-                        </span>
-                        <span class="tech-badge">
-                            <svg viewBox="0 0 24 24" fill="#06B6D4"><path d="M12.001 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C13.666 10.618 15.027 12 18.001 12c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C16.337 6.182 14.976 4.8 12.001 4.8zm-6 7.2c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624 1.177 1.194 2.538 2.576 5.512 2.576 3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C10.337 13.382 8.976 12 6.001 12z"/></svg>
-                            NativeWind / Tailwind
-                        </span>
-                        <span class="tech-badge">
-                            <svg viewBox="0 0 24 24" fill="#764ABC"><path d="M16.634 16.504c.87-.075 1.543-.818 1.5-1.703-.043-.884-.79-1.575-1.68-1.5s-1.543.818-1.5 1.703c.043.884.79 1.575 1.68 1.5zm-2.225-2.535c-.39-.18-.816-.21-1.215-.09l-.07.02c-.21.06-.408.16-.58.3l-.65.52c-.192.15-.453.15-.645 0l-.65-.52a1.693 1.693 0 0 0-.58-.3l-.07-.02a1.693 1.693 0 0 0-1.215.09L7.38 15.1c-.42.195-.645.66-.54 1.11l.26 1.12c.06.258.21.486.42.65l.82.64c.15.116.336.18.525.18h4.27c.19 0 .374-.064.525-.18l.82-.64c.21-.164.36-.392.42-.65l.26-1.12c.105-.45-.12-.915-.54-1.11z"/><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm7.07 18.614c-.122.2-.303.354-.52.446l-5.788 2.407c-.388.16-.826.16-1.214 0L5.76 19.06a1.163 1.163 0 0 1-.52-.446L2.832 14.28a1.163 1.163 0 0 1-.075-.68l1.375-6.135c.066-.296.23-.558.462-.74L10.16 2.3c.27-.21.608-.3.94-.3s.67.09.94.3l5.566 4.425c.232.182.396.444.462.74l1.375 6.135c.042.188.014.39-.075.68z"/></svg>
-                            React Navigation
-                        </span>
+                        <span class="tech-badge"><span class="icon" style="background:#512BD4"></span>.NET / C#</span>
+                        <span class="tech-badge"><span class="icon" style="background:#CC2927"></span>SQL Server</span>
+                        <span class="tech-badge"><span class="icon" style="background:#339933"></span>Node.js</span>
+                        <span class="tech-badge"><span class="icon" style="background:#512BD4"></span>Microservicios</span>
+                        <span class="tech-badge"><span class="icon" style="background:#0078D4"></span>REST APIs</span>
                     </div>
                 </div>
                 <div class="tech-category">
-                    <h3>Backend & Cloud (AWS)</h3>
+                    <h3>Cloud (AWS)</h3>
                     <div class="tech-grid">
-                        <span class="tech-badge">
-                            <svg viewBox="0 0 24 24" fill="#FF9900"><path d="M6.763 10.036c0 .296.032.535.088.71.064.176.144.368.256.576.04.063.056.127.056.183 0 .08-.048.16-.152.24l-.503.335a.383.383 0 0 1-.208.072c-.08 0-.16-.04-.239-.112a2.47 2.47 0 0 1-.287-.375 6.18 6.18 0 0 1-.248-.471c-.622.734-1.405 1.101-2.347 1.101-.67 0-1.205-.191-1.596-.574-.391-.384-.59-.894-.59-1.533 0-.678.239-1.23.726-1.644.487-.415 1.133-.623 1.955-.623.272 0 .551.024.846.064.296.04.6.104.918.176v-.583c0-.607-.127-1.03-.375-1.277-.255-.248-.686-.367-1.3-.367-.28 0-.568.032-.863.104-.296.072-.583.16-.862.272a2.287 2.287 0 0 1-.28.104.488.488 0 0 1-.127.024c-.112 0-.168-.08-.168-.247v-.391c0-.128.016-.224.056-.28a.597.597 0 0 1 .224-.167c.28-.144.616-.264 1.01-.36a4.84 4.84 0 0 1 1.244-.152c.95 0 1.644.216 2.091.647.44.43.662 1.085.662 1.963v2.586zm-3.24 1.214c.263 0 .535-.048.822-.144.287-.096.543-.271.758-.51.128-.152.224-.32.272-.512.047-.191.08-.423.08-.694v-.335a6.66 6.66 0 0 0-.735-.136 6.02 6.02 0 0 0-.75-.048c-.535 0-.926.104-1.19.32-.263.215-.39.518-.39.917 0 .375.095.655.295.846.191.2.47.296.838.296zm6.41.862c-.144 0-.24-.024-.304-.08-.064-.048-.12-.16-.168-.311L7.586 5.55a1.398 1.398 0 0 1-.072-.32c0-.128.064-.2.191-.2h.783c.151 0 .255.025.31.08.065.048.113.16.16.312l1.342 5.284 1.245-5.284c.04-.16.088-.264.151-.312a.549.549 0 0 1 .32-.08h.638c.152 0 .256.025.32.08.063.048.12.16.151.312l1.261 5.348 1.381-5.348c.048-.16.104-.264.16-.312a.52.52 0 0 1 .311-.08h.743c.128 0 .2.064.2.2 0 .04-.009.08-.017.128a1.137 1.137 0 0 1-.056.2l-1.923 6.17c-.048.16-.104.264-.168.312a.549.549 0 0 1-.304.08h-.687c-.151 0-.255-.024-.32-.08-.063-.056-.119-.16-.15-.32l-1.238-5.148-1.23 5.14c-.04.16-.087.264-.15.32-.065.056-.177.08-.32.08zm10.256.215c-.415 0-.83-.048-1.229-.143-.399-.096-.71-.2-.918-.32-.128-.071-.216-.151-.248-.223a.563.563 0 0 1-.048-.224v-.407c0-.167.064-.247.183-.247.048 0 .096.008.144.024s.12.048.2.08c.271.12.566.215.878.279.319.064.63.096.95.096.502 0 .894-.088 1.165-.264a.86.86 0 0 0 .415-.758.777.777 0 0 0-.215-.559c-.144-.151-.415-.287-.806-.415l-1.157-.36c-.583-.183-1.014-.454-1.277-.813a1.902 1.902 0 0 1-.4-1.158c0-.335.073-.63.216-.886.144-.255.335-.479.575-.654.24-.184.51-.32.83-.415a3.54 3.54 0 0 1 1.005-.144c.176 0 .36.008.535.032.183.024.35.056.518.088.16.04.312.08.455.127.144.048.256.096.336.152a.69.69 0 0 1 .24.2.43.43 0 0 1 .071.263v.375c0 .168-.064.256-.184.256a.83.83 0 0 1-.303-.096 3.652 3.652 0 0 0-1.532-.311c-.455 0-.815.072-1.062.223-.248.152-.375.383-.375.694 0 .224.08.416.24.567.16.152.454.304.87.44l1.133.358c.574.184.99.44 1.237.767.247.327.367.702.367 1.117 0 .343-.072.655-.207.926-.144.272-.336.511-.583.703-.248.2-.543.343-.886.447-.36.111-.734.167-1.142.167zM21.698 16.207c-2.626 1.94-6.442 2.969-9.722 2.969-4.598 0-8.74-1.7-11.87-4.526-.247-.223-.024-.527.27-.351 3.384 1.963 7.559 3.153 11.877 3.153 2.914 0 6.114-.607 9.06-1.852.439-.2.814.287.385.607zM22.792 14.961c-.336-.43-2.22-.207-3.074-.104-.255.032-.295-.192-.063-.36 1.5-1.053 3.967-.75 4.254-.399.287.36-.08 2.826-1.485 4.007-.216.184-.423.088-.327-.151.319-.79 1.03-2.57.695-2.993z"/></svg>
-                            AWS Lambda
-                        </span>
-                        <span class="tech-badge">
-                            <svg viewBox="0 0 24 24" fill="#4053D6"><path d="M16.606 9.59c-.27 0-.484.042-.645.126l-.006.003c-.16.09-.276.215-.346.37-.068.154-.103.336-.103.547 0 .314.073.546.223.7l.004.003c.152.15.383.265.694.346l.66.174c.148.037.252.088.312.152.06.064.087.158.087.28 0 .25-.17.374-.516.374-.15 0-.32-.028-.506-.086a2.384 2.384 0 0 1-.522-.228l-.306.606c.188.116.4.205.633.268.233.064.454.095.66.095.37 0 .66-.085.866-.256.206-.173.308-.413.308-.72 0-.2-.034-.37-.104-.508a.805.805 0 0 0-.29-.33 1.836 1.836 0 0 0-.458-.213l-.554-.156c-.178-.05-.302-.103-.37-.158a.31.31 0 0 1-.1-.248c0-.112.04-.196.122-.252.08-.056.198-.084.353-.084.13 0 .274.024.428.073.154.05.304.116.45.2l.288-.61a2.364 2.364 0 0 0-.578-.24 2.226 2.226 0 0 0-.6-.078zM1.62 9.59c-.27 0-.484.042-.645.126l-.006.003c-.16.09-.276.215-.346.37-.068.154-.103.336-.103.547 0 .314.073.546.223.7l.004.003c.152.15.383.265.694.346l.66.174c.148.037.252.088.312.152.06.064.087.158.087.28 0 .25-.17.374-.516.374-.15 0-.32-.028-.506-.086a2.384 2.384 0 0 1-.522-.228l-.306.606c.188.116.4.205.633.268.233.064.454.095.66.095.37 0 .66-.085.866-.256.206-.173.308-.413.308-.72 0-.2-.034-.37-.104-.508a.805.805 0 0 0-.29-.33 1.836 1.836 0 0 0-.458-.213L2.71 11.34c-.178-.05-.302-.103-.37-.158a.31.31 0 0 1-.1-.248c0-.112.04-.196.122-.252.08-.056.198-.084.353-.084.13 0 .274.024.428.073.154.05.304.116.45.2l.288-.61a2.364 2.364 0 0 0-.578-.24 2.226 2.226 0 0 0-.6-.078zm5.974 0a1.6 1.6 0 0 0-.67.132 1.138 1.138 0 0 0-.457.384c-.115.168-.173.37-.173.606v2.25h.794v-2.21c0-.175.046-.308.14-.4.094-.092.222-.138.386-.138a.84.84 0 0 1 .342.076c.117.05.22.12.31.21l.26-.658a1.452 1.452 0 0 0-.424-.19 1.63 1.63 0 0 0-.508-.062zm-3.09.072v3.292h.794V9.662zm14.29 0l1.024 1.584L18.8 12.83h.87l.66-1.06.014-.024.015.024.67 1.06h.864l-1.032-1.584L21.88 9.66h-.864l-.656 1.043-.015.024-.014-.024-.66-1.043zm-6.2.004v3.288h.794v-1.242h.78c.38 0 .674-.1.884-.3.21-.198.314-.477.314-.836 0-.357-.106-.636-.318-.834-.21-.2-.506-.3-.886-.3zm-5.31 0v3.288h2.2v-.69h-1.407v-.716h1.21v-.69h-1.21v-.502h1.384v-.69zm6.104.668h.62c.18 0 .316.046.408.14.092.09.138.22.138.384 0 .168-.046.296-.137.384-.09.088-.227.132-.408.132h-.62zM12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm9.568 5.736L13.14 17.256H9.656L5.42 7.704h3.192l2.664 6.312L16.38 5.736z"/></svg>
-                            AWS SAM
-                        </span>
-                        <span class="tech-badge">
-                            <svg viewBox="0 0 24 24" fill="#C925D1"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-                            DynamoDB
-                        </span>
-                        <span class="tech-badge">
-                            <svg viewBox="0 0 24 24" fill="#FF4F8B"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
-                            API Gateway
-                        </span>
-                        <span class="tech-badge">
-                            <svg viewBox="0 0 24 24" fill="#DD344C"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>
-                            Cognito
-                        </span>
-                        <span class="tech-badge">
-                            <svg viewBox="0 0 24 24" fill="#569A31"><path d="M20 6h-4V4c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v2H4c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zM10 4h4v2h-4V4z"/></svg>
-                            S3 & CloudFront
-                        </span>
+                        <span class="tech-badge"><span class="icon" style="background:#FF9900"></span>AWS Lambda</span>
+                        <span class="tech-badge"><span class="icon" style="background:#C925D1"></span>DynamoDB</span>
+                        <span class="tech-badge"><span class="icon" style="background:#FF4F8B"></span>API Gateway</span>
+                        <span class="tech-badge"><span class="icon" style="background:#DD344C"></span>Cognito</span>
+                        <span class="tech-badge"><span class="icon" style="background:#569A31"></span>S3 & CloudFront</span>
+                        <span class="tech-badge"><span class="icon" style="background:#4053D6"></span>SAM / CloudFormation</span>
+                    </div>
+                </div>
+                <div class="tech-category">
+                    <h3>Frontend</h3>
+                    <div class="tech-grid">
+                        <span class="tech-badge"><span class="icon" style="background:#DD0031"></span>Angular</span>
+                        <span class="tech-badge"><span class="icon" style="background:#61DAFB"></span>React / React Native</span>
+                        <span class="tech-badge"><span class="icon" style="background:#3178C6"></span>TypeScript</span>
+                        <span class="tech-badge"><span class="icon" style="background:#E34F26"></span>HTML5 / CSS3</span>
+                        <span class="tech-badge"><span class="icon" style="background:#06B6D4"></span>Tailwind CSS</span>
                     </div>
                 </div>
                 <div class="tech-category">
                     <h3>Herramientas & Otros</h3>
                     <div class="tech-grid">
-                        <span class="tech-badge">
-                            <svg viewBox="0 0 24 24" fill="#F05032"><path d="M23.546 10.93L13.067.452c-.604-.603-1.582-.603-2.188 0L8.708 2.627l2.76 2.76c.645-.215 1.379-.07 1.889.441.516.515.658 1.258.438 1.9l2.66 2.66c.643-.22 1.386-.076 1.9.438.72.72.72 1.884 0 2.604-.72.72-1.885.72-2.604 0-.54-.54-.674-1.337-.404-2l-2.48-2.48v6.53c.175.087.34.2.486.348.72.72.72 1.883 0 2.604-.72.72-1.884.72-2.604 0-.72-.72-.72-1.884 0-2.604.18-.18.39-.313.616-.402V8.83a2.018 2.018 0 0 1-.616-.401c-.554-.555-.68-1.376-.39-2.02L7.39 3.85.452 10.788c-.603.604-.603 1.584 0 2.188l10.48 10.477c.604.604 1.582.604 2.186 0l10.43-10.43c.604-.603.604-1.584 0-2.187"/></svg>
-                            Git
-                        </span>
-                        <span class="tech-badge">
-                            <svg viewBox="0 0 24 24" fill="#e6edf3"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
-                            GitHub
-                        </span>
-                        <span class="tech-badge">
-                            <svg viewBox="0 0 24 24" fill="#007ACC"><path d="M23.15 2.587L18.21.21a1.494 1.494 0 0 0-1.705.29l-9.46 8.63-4.12-3.128a.999.999 0 0 0-1.276.057L.327 7.261A1 1 0 0 0 .326 8.74L3.899 12 .326 15.26a1 1 0 0 0 .001 1.479L1.65 17.94a.999.999 0 0 0 1.276.057l4.12-3.128 9.46 8.63a1.492 1.492 0 0 0 1.704.29l4.942-2.377A1.5 1.5 0 0 0 24 20.06V3.939a1.5 1.5 0 0 0-.85-1.352zm-5.146 14.861L10.826 12l7.178-5.448v10.896z"/></svg>
-                            VS Code
-                        </span>
-                        <span class="tech-badge">
-                            <svg viewBox="0 0 24 24" fill="#339933"><path d="M11.998 24c-.321 0-.641-.084-.922-.247l-2.936-1.737c-.438-.245-.224-.332-.08-.383.585-.203.703-.25 1.328-.604.065-.037.15-.023.218.017l2.256 1.339a.29.29 0 0 0 .272 0l8.795-5.076a.277.277 0 0 0 .134-.238V6.921a.28.28 0 0 0-.137-.242L12.137 1.6a.27.27 0 0 0-.27 0L3.075 6.68a.285.285 0 0 0-.14.243v10.15a.27.27 0 0 0 .138.235l2.409 1.392c1.307.654 2.108-.116 2.108-.89V7.787c0-.142.114-.253.256-.253h1.115c.139 0 .255.112.255.253v10.021c0 1.745-.95 2.745-2.604 2.745-.508 0-.909 0-2.026-.551L2.28 18.675A1.857 1.857 0 0 1 1.36 17.07V6.921c0-.646.345-1.249.92-1.573L11.075.271a1.927 1.927 0 0 1 1.846 0l8.794 5.077c.575.324.92.927.92 1.573v10.15a1.86 1.86 0 0 1-.92 1.604l-8.795 5.078c-.28.163-.6.247-.922.247z"/></svg>
-                            Node.js
-                        </span>
+                        <span class="tech-badge"><span class="icon" style="background:#F05032"></span>Git</span>
+                        <span class="tech-badge"><span class="icon" style="background:#e6edf3"></span>GitHub</span>
+                        <span class="tech-badge"><span class="icon" style="background:#007ACC"></span>VS Code</span>
+                        <span class="tech-badge"><span class="icon" style="background:#0078D4"></span>Azure DevOps</span>
+                        <span class="tech-badge"><span class="icon" style="background:#2496ED"></span>Docker</span>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience">
+        <div class="fade-up">
+            <p class="section-label">Experiencia profesional</p>
+            <h2 class="section-title">Mi trayectoria</h2>
+            <div class="experience-list">
+
+                <div class="experience-item">
+                    <div class="experience-dot"><div class="experience-dot-inner"></div></div>
+                    <div class="experience-content">
+                        <h3 class="experience-role">Senior Software Engineer .NET + AWS</h3>
+                        <p class="experience-company">TUI</p>
+                        <span class="experience-duration">4 años</span>
+                        <p class="experience-desc">Desarrollo y mantenimiento de soluciones enterprise con .NET y servicios cloud en AWS. Arquitectura de microservicios y liderazgo técnico en proyectos de gran escala.</p>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="experience-dot"><div class="experience-dot-inner"></div></div>
+                    <div class="experience-content">
+                        <h3 class="experience-role">Software Engineer .NET</h3>
+                        <p class="experience-company">FORWARD by Iturri</p>
+                        <span class="experience-duration">1 año</span>
+                        <p class="experience-desc">Ingeniería de software con tecnologías .NET, contribuyendo al desarrollo de soluciones innovadoras para el sector industrial.</p>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="experience-dot"><div class="experience-dot-inner"></div></div>
+                    <div class="experience-content">
+                        <h3 class="experience-role">Software Developer .NET</h3>
+                        <p class="experience-company">Sequel Business Solutions Ltd</p>
+                        <span class="experience-duration">2 años</span>
+                        <p class="experience-desc">Desarrollo de aplicaciones empresariales con .NET, trabajando en soluciones de negocio a medida para clientes internacionales.</p>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="experience-dot"><div class="experience-dot-inner"></div></div>
+                    <div class="experience-content">
+                        <h3 class="experience-role">Software Developer .NET</h3>
+                        <p class="experience-company">D.Med Healthcare</p>
+                        <span class="experience-duration">2 años</span>
+                        <p class="experience-desc">Desarrollo de software para el sector sanitario, creando soluciones tecnológicas que mejoran los procesos de atención médica.</p>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="experience-dot"><div class="experience-dot-inner"></div></div>
+                    <div class="experience-content">
+                        <h3 class="experience-role">Software Developer .NET</h3>
+                        <p class="experience-company">Avanade</p>
+                        <span class="experience-duration">1 año</span>
+                        <p class="experience-desc">Desarrollo de proyectos para una universidad privada, implementando soluciones con tecnologías Microsoft.</p>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="experience-dot"><div class="experience-dot-inner"></div></div>
+                    <div class="experience-content">
+                        <h3 class="experience-role">Becario</h3>
+                        <p class="experience-company">Avanade</p>
+                        <span class="experience-duration">1 año</span>
+                        <p class="experience-desc">Inicio de carrera profesional en consultoría tecnológica, aprendiendo las bases del desarrollo empresarial con tecnologías .NET.</p>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
@@ -633,16 +272,15 @@
         <div class="fade-up">
             <p class="section-label">Proyectos</p>
             <h2 class="section-title">Lo que he construido</h2>
-
             <div class="project-card">
                 <div class="project-header">
                     <h3 class="project-name">CalmaKids</h3>
                     <span class="project-type">App Mobile</span>
                 </div>
                 <p class="project-desc">
-                    Aplicación que ayuda a padres a encontrar películas y series tranquilas y apropiadas para niños, 
-                    especialmente aquellos sensibles a estímulos sensoriales. Cuenta con un sistema propio de puntuación 
-                    (<strong style="color:var(--accent-blue)">CalmaScore</strong>) que analiza el contenido audiovisual 
+                    Aplicación que ayuda a padres a encontrar películas y series tranquilas y apropiadas para niños,
+                    especialmente aquellos sensibles a estímulos sensoriales. Cuenta con un sistema propio de puntuación
+                    (<strong style="color:var(--accent-blue)">CalmaScore</strong>) que analiza el contenido audiovisual
                     según múltiples métricas sensoriales.
                 </p>
                 <ul class="project-features">
@@ -689,7 +327,6 @@
                     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
                     GitHub
                 </a>
-                <!-- TODO: Añade aquí tu email u otros datos de contacto -->
             </div>
         </div>
     </section>
@@ -703,7 +340,6 @@
     </footer>
 
     <script>
-        // Mobile nav toggle
         const toggle = document.getElementById('navToggle');
         const links = document.getElementById('navLinks');
         toggle.addEventListener('click', () => {
@@ -718,7 +354,6 @@
             });
         });
 
-        // Scroll animations
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -729,7 +364,6 @@
 
         document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
-        // Active nav link on scroll
         const sections = document.querySelectorAll('section[id]');
         const navAnchors = document.querySelectorAll('.nav-links a');
 
