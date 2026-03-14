@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Política de Privacidad - Noche de Lobos</title>
+    <style>
+      :root { color-scheme: dark; --bg:#0f172a; --card:#1e293b; --text:#f1f5f9; --muted:#94a3b8; --accent:#f59e0b; --border:#334155; }
+      * { box-sizing: border-box; }
+      body { margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif; color:var(--text); background:var(--bg); line-height:1.6; }
+      .wrap { max-width:880px; margin:24px auto; padding:0 16px; }
+      .card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:24px; }
+      h1 { margin:0 0 8px; font-size:1.9rem; color:var(--accent); }
+      h2 { margin:28px 0 8px; font-size:1.2rem; color:var(--accent); }
+      .meta { color:var(--muted); margin:0 0 18px; }
+      a { color:var(--accent); text-decoration:none; } a:hover { text-decoration:underline; }
+      hr { border:0; border-top:1px solid var(--border); margin:18px 0; }
+      ul, ol { padding-left: 24px; }
+      li { margin-bottom: 8px; }
+    </style>
+  </head>
+  <body>
+    <main class="wrap">
+      <article class="card">
+        <h1>🐺 Política de Privacidad de Noche de Lobos</h1>
+        <p class="meta"><strong>Fecha de última actualización:</strong> 14 de marzo de 2026</p>
+
+        <h2>1. Responsable del tratamiento</h2>
+        <p>Noche de Lobos (en adelante, "Noche de Lobos", "nosotros" o "la App") es un juego multijugador de deducción social basado en el clásico juego de mesa "Hombre Lobo" (Werewolf).</p>
+        <p>
+          <strong>Responsable:</strong> Manu Creating<br />
+          <strong>Contacto de privacidad y soporte:</strong> <a href="mailto:manucreatingsoftware@gmail.com">manucreatingsoftware@gmail.com</a><br />
+        </p>
+
+        <hr />
+
+        <h2>2. Ámbito de aplicación</h2>
+        <p>Esta Política de Privacidad describe cómo recopilamos, usamos, almacenamos y protegemos los datos cuando utilizas la aplicación móvil Noche de Lobos.</p>
+
+        <h2>3. Datos que recopilamos</h2>
+        <p>Noche de Lobos está diseñado con un enfoque de <strong>privacidad por defecto</strong>. Recopilamos la mínima información necesaria para el funcionamiento del juego:</p>
+        <ol>
+          <li><strong>Datos de sesión de juego (temporales)</strong>
+            <ul>
+              <li>Nombre de jugador elegido (almacenado localmente en tu dispositivo)</li>
+              <li>Identificador único de sesión (UUID generado localmente)</li>
+              <li>Estado de la partida durante el juego</li>
+            </ul>
+          </li>
+          <li><strong>Preferencias locales</strong>
+            <ul>
+              <li>Configuración de sonido (música y efectos)</li>
+              <li>Código de sala guardado para reconexión</li>
+            </ul>
+          </li>
+          <li><strong>Datos técnicos mínimos</strong>
+            <ul>
+              <li>Registros de conexión WebSocket necesarios para el funcionamiento del juego en tiempo real</li>
+              <li>Registros de error para diagnóstico y estabilidad del servicio</li>
+            </ul>
+          </li>
+        </ol>
+        <p><strong>Importante:</strong></p>
+        <ul>
+          <li>No requerimos registro de cuenta ni autenticación.</li>
+          <li>No recopilamos correo electrónico, teléfono ni datos personales identificables.</li>
+          <li>No vendemos ni compartimos datos personales con terceros.</li>
+          <li>No utilizamos cookies de seguimiento ni publicidad.</li>
+        </ul>
+
+        <h2>4. Finalidades del tratamiento</h2>
+        <ul>
+          <li>Permitir partidas multijugador en tiempo real.</li>
+          <li>Mantener tu sesión activa durante el juego y permitir reconexión.</li>
+          <li>Guardar tus preferencias locales (nombre, sonido).</li>
+          <li>Mejorar rendimiento, estabilidad y seguridad de la App.</li>
+          <li>Prevenir abuso o uso malicioso del servicio.</li>
+        </ul>
+
+        <h2>5. Base jurídica (si aplica RGPD)</h2>
+        <ul>
+          <li><strong>Ejecución del servicio:</strong> para poder prestar las funcionalidades del juego multijugador.</li>
+          <li><strong>Interés legítimo:</strong> seguridad, prevención de abuso y mejora técnica del servicio.</li>
+        </ul>
+
+        <h2>6. Proveedores y terceros</h2>
+        <p>Utilizamos proveedores tecnológicos para el funcionamiento del juego:</p>
+        <ul>
+          <li><strong>Amazon Web Services (AWS)</strong>:
+            <ul>
+              <li>Amazon API Gateway WebSocket (comunicación en tiempo real)</li>
+              <li>AWS Lambda (lógica del juego)</li>
+              <li>Amazon DynamoDB (estado temporal de partidas)</li>
+              <li>Amazon SQS (gestión de turnos y timeouts)</li>
+            </ul>
+          </li>
+          <li><strong>Google AI (Gemini)</strong>: Para generar comportamiento de bots IA en partidas con menos jugadores humanos. No se envían datos personales, solo contexto anónimo del estado del juego.</li>
+        </ul>
+        <p>Estos proveedores actúan bajo sus propias condiciones de seguridad y cumplimiento.</p>
+
+        <h2>7. Conservación de datos</h2>
+        <ul>
+          <li><strong>Datos de partida:</strong> Se eliminan automáticamente 24 horas después de finalizar la partida (TTL en DynamoDB).</li>
+          <li><strong>Preferencias locales:</strong> Se almacenan únicamente en tu dispositivo y puedes eliminarlas desinstalando la aplicación.</li>
+          <li><strong>Registros técnicos:</strong> Se conservan por periodos limitados para operación y diagnóstico.</li>
+        </ul>
+
+        <h2>8. Derechos de las personas usuarias</h2>
+        <p>Dado que no recopilamos datos personales identificables, la mayoría de los derechos RGPD no aplican directamente. Sin embargo, puedes:</p>
+        <ul>
+          <li>Eliminar tus preferencias locales desinstalando la aplicación.</li>
+          <li>Contactarnos para cualquier consulta sobre privacidad.</li>
+        </ul>
+        <p>Para consultas, escríbenos a <a href="mailto:manucreatingsoftware@gmail.com">manucreatingsoftware@gmail.com</a>.</p>
+
+        <h2>9. Seguridad</h2>
+        <ul>
+          <li>Cifrado en tránsito (WSS/TLS para WebSocket)</li>
+          <li>Control de acceso a servicios e infraestructura</li>
+          <li>Validaciones de entrada y medidas antiabuso</li>
+          <li>Tokens de sesión para prevenir suplantación de identidad en partidas</li>
+        </ul>
+
+        <h2>10. Menores de edad</h2>
+        <p>Noche de Lobos es un juego de estrategia social apto para todas las edades. No recopilamos información personal de menores ni requerimos registro.</p>
+
+        <h2>11. Transferencias internacionales</h2>
+        <p>Dado que usamos proveedores globales (como AWS en región eu-central-1), puede haber tratamiento de datos técnicos fuera de tu país de residencia, siempre bajo estándares de seguridad adecuados.</p>
+
+        <h2>12. Cambios en esta política</h2>
+        <p>Podemos actualizar esta Política de Privacidad para reflejar cambios legales, técnicos o de producto. La fecha de actualización se indicará al inicio del documento.</p>
+
+        <h2>13. Contacto</h2>
+        <p>
+          <strong>Email:</strong> <a href="mailto:manucreatingsoftware@gmail.com">manucreatingsoftware@gmail.com</a><br />
+          <strong>Responsable:</strong> Manu Creating<br />
+          <strong>Proyecto:</strong> <a href="https://github.com/Manuelocon">https://github.com/Manuelocon</a>
+        </p>
+      </article>
+    </main>
+  </body>
+</html>
