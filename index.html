@@ -3,21 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manuel Creating — Software Developer | .NET, AWS, React</title>
-    <meta name="description" content="Portfolio de desarrollador de software con más de 10 años de experiencia en .NET, AWS, SQL Server, Angular y React.">
+    <title>Manuel Creating — Software Developer | .NET, AWS, React Native, IA</title>
+    <meta name="description" content="Desarrollador de software con más de 10 años de experiencia en .NET, AWS serverless, Angular y React Native. Creador de CalmaKids y Noche de Lobos, dos apps publicadas en Google Play.">
+    <meta name="theme-color" content="#0d1117">
+    <meta name="author" content="Manuel Creating">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_ES">
+    <meta property="og:title" content="Manuel Creating — Software Developer">
+    <meta property="og:description" content="Más de 10 años construyendo software con .NET y AWS. Creador de CalmaKids y Noche de Lobos, dos apps móviles full-stack publicadas en Google Play.">
+    <meta property="og:url" content="https://manuelocon.github.io/Portfolio/">
+    <meta name="twitter:card" content="summary">
+    <link rel="canonical" href="https://manuelocon.github.io/Portfolio/">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2358a6ff'/%3E%3Cstop offset='1' stop-color='%23bc8cff'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='%230d1117'/%3E%3Ctext x='32' y='43' font-family='Arial,Helvetica,sans-serif' font-size='27' font-weight='bold' fill='url(%23g)' text-anchor='middle'%3EMC%3C/text%3E%3C/svg%3E">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
-            --bg-primary: #0d1117; --bg-card: #161b22; --border: #30363d;
+            --bg-primary: #0d1117; --bg-card: #161b22; --bg-inset: #0d1117; --border: #30363d;
             --text-primary: #e6edf3; --text-secondary: #8b949e;
             --accent-blue: #58a6ff; --accent-purple: #bc8cff;
+            --accent-green: #3fb950; --accent-amber: #d29922;
             --accent-gradient: linear-gradient(135deg, #58a6ff, #bc8cff);
         }
         html { scroll-behavior: smooth; }
         body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background-color: var(--bg-primary); color: var(--text-primary); line-height: 1.6; overflow-x: hidden; }
+        ::selection { background: rgba(88, 166, 255, 0.3); }
         nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(13, 17, 23, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 0 1.5rem; }
         .nav-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 60px; }
         .nav-logo { font-weight: 700; font-size: 1.15rem; background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
@@ -29,14 +41,21 @@
         section { max-width: 1100px; margin: 0 auto; padding: 6rem 1.5rem; }
         .section-label { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em; background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 0.75rem; }
         .section-title { font-size: 2rem; font-weight: 700; margin-bottom: 1.5rem; line-height: 1.2; }
-        #hero { min-height: 100vh; display: flex; align-items: center; padding-top: 60px; }
-        .hero-content { max-width: 680px; }
+        #hero { min-height: 100vh; display: flex; align-items: center; padding-top: 60px; position: relative; overflow: hidden; }
+        #hero::before { content: ''; position: absolute; top: 0; right: 0; width: 45vw; height: 45vw; max-width: 620px; max-height: 620px; background: radial-gradient(circle, rgba(88, 166, 255, 0.13), rgba(188, 140, 255, 0.06) 45%, transparent 70%); pointer-events: none; z-index: -1; }
+        .hero-content { max-width: 700px; }
         .hero-greeting { font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 0.75rem; font-weight: 400; }
         .hero-name { font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 700; line-height: 1.1; margin-bottom: 1rem; }
         .hero-name .gradient { background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        .hero-tagline { font-size: 1.2rem; color: var(--text-secondary); max-width: 520px; margin-bottom: 2rem; line-height: 1.7; }
+        .hero-tagline { font-size: 1.2rem; color: var(--text-secondary); max-width: 560px; margin-bottom: 2.25rem; line-height: 1.7; }
+        .hero-actions { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 3rem; }
         .hero-cta { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.75rem; background: var(--accent-gradient); color: var(--bg-primary); text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 0.95rem; transition: opacity 0.25s, transform 0.25s; }
         .hero-cta:hover { opacity: 0.9; transform: translateY(-1px); }
+        .hero-cta-ghost { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.5rem; background: transparent; border: 1px solid var(--border); color: var(--text-primary); text-decoration: none; border-radius: 8px; font-weight: 500; font-size: 0.95rem; transition: border-color 0.25s, transform 0.25s; }
+        .hero-cta-ghost:hover { border-color: var(--accent-blue); transform: translateY(-1px); }
+        .hero-stats { display: flex; flex-wrap: wrap; gap: 2.5rem; }
+        .hero-stat-value { font-size: 1.75rem; font-weight: 700; background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1.2; }
+        .hero-stat-label { font-size: 0.8rem; color: var(--text-secondary); font-weight: 500; }
         .about-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; }
         .about-text { color: var(--text-secondary); font-size: 1.05rem; line-height: 1.8; }
         .about-text p + p { margin-top: 1rem; }
@@ -58,25 +77,48 @@
         .experience-company { font-size: 0.95rem; color: var(--accent-blue); font-weight: 500; margin-bottom: 0.35rem; }
         .experience-duration { font-size: 0.8rem; color: var(--text-secondary); font-weight: 500; padding: 0.2rem 0.6rem; background: rgba(88, 166, 255, 0.08); border-radius: 12px; display: inline-block; margin-bottom: 0.5rem; }
         .experience-desc { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7; }
-        .project-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 2.5rem; transition: border-color 0.3s; }
-        .project-card:hover { border-color: var(--accent-blue); }
-        .project-header { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.25rem; }
+        .experience-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.6rem; }
+        .experience-tag { font-size: 0.7rem; font-weight: 500; color: var(--text-secondary); padding: 0.15rem 0.5rem; border: 1px solid var(--border); border-radius: 5px; }
+        .section-intro { color: var(--text-secondary); font-size: 1.05rem; line-height: 1.8; max-width: 620px; margin-bottom: 2.5rem; }
+        .projects-list { display: flex; flex-direction: column; gap: 2rem; }
+        .project-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 2.5rem; transition: border-color 0.3s, box-shadow 0.3s; }
+        .project-card:hover { border-color: var(--accent-blue); box-shadow: 0 0 0 1px rgba(88, 166, 255, 0.1), 0 12px 40px -20px rgba(88, 166, 255, 0.35); }
+        .project-header { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 1rem; }
         .project-name { font-size: 1.5rem; font-weight: 700; }
+        .project-badges { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
         .project-type { font-size: 0.8rem; font-weight: 500; padding: 0.3rem 0.75rem; background: rgba(88, 166, 255, 0.1); color: var(--accent-blue); border-radius: 20px; white-space: nowrap; }
-        .project-desc { color: var(--text-secondary); font-size: 1rem; line-height: 1.7; margin-bottom: 1.5rem; }
-        .project-features { list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.6rem; margin-bottom: 2rem; }
-        .project-features li { display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; color: var(--text-secondary); }
-        .project-features li::before { content: ''; display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--accent-gradient); flex-shrink: 0; }
+        .project-status { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.8rem; font-weight: 500; padding: 0.3rem 0.75rem; border-radius: 20px; white-space: nowrap; }
+        .project-status.live { background: rgba(63, 185, 80, 0.1); color: var(--accent-green); }
+        .project-status.review { background: rgba(210, 153, 34, 0.1); color: var(--accent-amber); }
+        .status-dot { width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+        .project-status.live .status-dot { animation: pulse 2s ease-in-out infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
+        .project-desc { color: var(--text-secondary); font-size: 1rem; line-height: 1.7; margin-bottom: 1.75rem; }
+        .project-metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 2rem; }
+        .project-metric { background: var(--bg-inset); padding: 1.1rem 1rem; text-align: center; }
+        .project-metric-value { font-size: 1.4rem; font-weight: 700; background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1.25; }
+        .project-metric-label { font-size: 0.72rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.06em; font-weight: 500; margin-top: 0.15rem; }
+        .project-subtitle { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-secondary); margin-bottom: 1rem; }
+        .project-features { list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 0.6rem 1.5rem; margin-bottom: 2rem; }
+        .project-features li { display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.9rem; color: var(--text-secondary); }
+        .project-features li::before { content: ''; display: inline-block; width: 6px; height: 6px; margin-top: 0.55rem; border-radius: 50%; background: var(--accent-gradient); flex-shrink: 0; }
+        .project-arch { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; margin-bottom: 2rem; }
+        .arch-block { background: rgba(13, 17, 23, 0.6); border: 1px solid var(--border); border-radius: 10px; padding: 1.1rem 1.25rem; }
+        .arch-block h4 { font-size: 0.85rem; font-weight: 600; color: var(--accent-purple); margin-bottom: 0.5rem; }
+        .arch-block p { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.7; }
         .project-tech { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem; }
         .project-tech-tag { font-size: 0.75rem; font-weight: 500; padding: 0.3rem 0.7rem; background: rgba(188, 140, 255, 0.08); color: var(--accent-purple); border: 1px solid rgba(188, 140, 255, 0.15); border-radius: 6px; }
-        .project-links { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
-        .google-play-badge { height: 50px; transition: opacity 0.25s; }
+        .project-links { display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap; }
+        .google-play-badge { height: 50px; display: block; transition: opacity 0.25s; }
         .google-play-badge:hover { opacity: 0.85; }
-        .contact-text { color: var(--text-secondary); font-size: 1.05rem; line-height: 1.8; margin-bottom: 2rem; max-width: 560px; }
+        .project-link-text { font-size: 0.85rem; color: var(--text-secondary); text-decoration: none; border-bottom: 1px solid transparent; transition: color 0.25s, border-color 0.25s; }
+        .project-link-text:hover { color: var(--accent-blue); border-color: var(--accent-blue); }
+        .project-note { color: var(--text-secondary); font-size: 0.85rem; font-style: italic; }
+        .contact-text { color: var(--text-secondary); font-size: 1.05rem; line-height: 1.8; margin-bottom: 2rem; max-width: 580px; }
         .contact-links { display: flex; flex-wrap: wrap; gap: 1rem; }
         .contact-link { display: inline-flex; align-items: center; gap: 0.6rem; padding: 0.75rem 1.5rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; color: var(--text-primary); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: border-color 0.25s, transform 0.25s; }
         .contact-link:hover { border-color: var(--accent-blue); transform: translateY(-2px); }
-        .contact-link svg { width: 20px; height: 20px; }
+        .contact-link svg { width: 20px; height: 20px; flex-shrink: 0; }
         footer { border-top: 1px solid var(--border); padding: 2rem 1.5rem; text-align: center; }
         .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
         .footer-copy { font-size: 0.8rem; color: var(--text-secondary); }
@@ -92,19 +134,28 @@
             .nav-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
             .nav-toggle.active span:nth-child(2) { opacity: 0; }
             .nav-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+            .hero-stats { gap: 1.5rem 2rem; }
+            .hero-stat-value { font-size: 1.5rem; }
             .project-card { padding: 1.5rem; }
+            .project-metrics { grid-template-columns: repeat(2, 1fr); }
+            .project-arch { grid-template-columns: 1fr; }
             .section-title { font-size: 1.6rem; }
             .footer-inner { flex-direction: column; text-align: center; }
             .experience-item { gap: 1rem; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            .fade-up { opacity: 1; transform: none; transition: none; }
+            .project-status.live .status-dot { animation: none; }
         }
     </style>
 </head>
 <body>
 
     <!-- NAV -->
-    <nav>
+    <nav aria-label="Navegación principal">
         <div class="nav-inner">
-            <span class="nav-logo">MC</span>
+            <a href="#hero" class="nav-logo" style="text-decoration:none">MC</a>
             <ul class="nav-links" id="navLinks">
                 <li><a href="#about">Sobre mí</a></li>
                 <li><a href="#tech">Tecnologías</a></li>
@@ -112,7 +163,7 @@
                 <li><a href="#projects">Proyectos</a></li>
                 <li><a href="#contact">Contacto</a></li>
             </ul>
-            <button class="nav-toggle" id="navToggle" aria-label="Menú">
+            <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="navLinks">
                 <span></span><span></span><span></span>
             </button>
         </div>
@@ -123,11 +174,28 @@
         <div class="hero-content fade-up">
             <p class="hero-greeting">Hola, soy</p>
             <h1 class="hero-name">Manuel <span class="gradient">Creating</span></h1>
-            <p class="hero-tagline">Desarrollador de software con más de 10 años de experiencia. Entusiasta de la IA y la creación de soluciones digitales que aportan valor real.</p>
-            <a href="#projects" class="hero-cta">
-                Ver mis proyectos
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17l9.2-9.2"/><path d="M17 17V7H7"/></svg>
-            </a>
+            <p class="hero-tagline">Desarrollador de software con más de 10 años de experiencia. Construyo productos de principio a fin: del backend serverless en AWS a la app publicada en las tiendas, con la IA como herramienta y no como adorno.</p>
+            <div class="hero-actions">
+                <a href="#projects" class="hero-cta">
+                    Ver mis proyectos
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17l9.2-9.2"/><path d="M17 17V7H7"/></svg>
+                </a>
+                <a href="#contact" class="hero-cta-ghost">Hablemos</a>
+            </div>
+            <div class="hero-stats">
+                <div>
+                    <div class="hero-stat-value">+10 años</div>
+                    <div class="hero-stat-label">de experiencia profesional</div>
+                </div>
+                <div>
+                    <div class="hero-stat-value">2 apps</div>
+                    <div class="hero-stat-label">propias en Google Play</div>
+                </div>
+                <div>
+                    <div class="hero-stat-value">Full-stack</div>
+                    <div class="hero-stat-label">backend, cloud y mobile</div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -140,6 +208,7 @@
                 <div class="about-text">
                     <p>Soy un desarrollador entusiasta de la <strong style="color:var(--accent-blue)">Inteligencia Artificial</strong> y la creación de software. Me apasiona explorar nuevas ideas y conceptos de aplicaciones, buscando siempre formas innovadoras de resolver problemas reales a través de la tecnología.</p>
                     <p>Con más de <strong style="color:var(--accent-blue)">10 años de experiencia</strong> en la industria del desarrollo de software, he trabajado extensamente con <strong style="color:var(--accent-purple)">AWS</strong>, <strong style="color:var(--accent-purple)">.NET</strong> y <strong style="color:var(--accent-purple)">SQL Server</strong>, dominando sus ecosistemas completos incluyendo arquitecturas de microservicios y los últimos estándares de calidad. También cuento con experiencia sólida en frontend con <strong style="color:var(--accent-purple)">Angular</strong> y <strong style="color:var(--accent-purple)">React</strong>.</p>
+                    <p>En paralelo diseño y publico mis propias aplicaciones de principio a fin: idea, backend serverless, app móvil, monetización y publicación en las tiendas. Ahora mismo tengo <strong style="color:var(--accent-blue)">dos apps en Google Play</strong> —CalmaKids y Noche de Lobos— y es ahí donde experimento con lo que más me interesa: <strong style="color:var(--accent-purple)">arquitecturas serverless</strong>, tiempo real e <strong style="color:var(--accent-purple)">IA aplicada a producto</strong>.</p>
                 </div>
             </div>
         </div>
@@ -152,44 +221,62 @@
             <h2 class="section-title">Herramientas con las que trabajo</h2>
             <div class="tech-categories">
                 <div class="tech-category">
-                    <h3>Backend</h3>
+                    <h3>Backend & APIs</h3>
                     <div class="tech-grid">
                         <span class="tech-badge"><span class="icon" style="background:#512BD4"></span>.NET / C#</span>
                         <span class="tech-badge"><span class="icon" style="background:#CC2927"></span>SQL Server</span>
                         <span class="tech-badge"><span class="icon" style="background:#339933"></span>Node.js</span>
+                        <span class="tech-badge"><span class="icon" style="background:#3178C6"></span>TypeScript</span>
                         <span class="tech-badge"><span class="icon" style="background:#512BD4"></span>Microservicios</span>
                         <span class="tech-badge"><span class="icon" style="background:#0078D4"></span>REST APIs</span>
+                        <span class="tech-badge"><span class="icon" style="background:#FF4F8B"></span>WebSockets</span>
                     </div>
                 </div>
                 <div class="tech-category">
-                    <h3>Cloud (AWS)</h3>
+                    <h3>Cloud & Serverless (AWS)</h3>
                     <div class="tech-grid">
                         <span class="tech-badge"><span class="icon" style="background:#FF9900"></span>AWS Lambda</span>
                         <span class="tech-badge"><span class="icon" style="background:#C925D1"></span>DynamoDB</span>
                         <span class="tech-badge"><span class="icon" style="background:#FF4F8B"></span>API Gateway</span>
                         <span class="tech-badge"><span class="icon" style="background:#DD344C"></span>Cognito</span>
+                        <span class="tech-badge"><span class="icon" style="background:#FF4F8B"></span>SQS</span>
                         <span class="tech-badge"><span class="icon" style="background:#569A31"></span>S3 & CloudFront</span>
+                        <span class="tech-badge"><span class="icon" style="background:#DD344C"></span>WAF</span>
+                        <span class="tech-badge"><span class="icon" style="background:#E7157B"></span>CloudWatch & X-Ray</span>
                         <span class="tech-badge"><span class="icon" style="background:#4053D6"></span>SAM / CloudFormation</span>
                     </div>
                 </div>
                 <div class="tech-category">
-                    <h3>Frontend</h3>
+                    <h3>Frontend & Mobile</h3>
                     <div class="tech-grid">
                         <span class="tech-badge"><span class="icon" style="background:#DD0031"></span>Angular</span>
                         <span class="tech-badge"><span class="icon" style="background:#61DAFB"></span>React / React Native</span>
-                        <span class="tech-badge"><span class="icon" style="background:#3178C6"></span>TypeScript</span>
+                        <span class="tech-badge"><span class="icon" style="background:#e6edf3"></span>Expo</span>
                         <span class="tech-badge"><span class="icon" style="background:#E34F26"></span>HTML5 / CSS3</span>
-                        <span class="tech-badge"><span class="icon" style="background:#06B6D4"></span>Tailwind CSS</span>
+                        <span class="tech-badge"><span class="icon" style="background:#06B6D4"></span>Tailwind / NativeWind</span>
+                        <span class="tech-badge"><span class="icon" style="background:#A4C639"></span>Google Play & App Store</span>
                     </div>
                 </div>
                 <div class="tech-category">
-                    <h3>Herramientas & Otros</h3>
+                    <h3>IA aplicada</h3>
+                    <div class="tech-grid">
+                        <span class="tech-badge"><span class="icon" style="background:#4285F4"></span>Google Gemini</span>
+                        <span class="tech-badge"><span class="icon" style="background:#bc8cff"></span>Embeddings & RAG</span>
+                        <span class="tech-badge"><span class="icon" style="background:#58a6ff"></span>Prompt engineering</span>
+                        <span class="tech-badge"><span class="icon" style="background:#e6edf3"></span>Agentes de código</span>
+                    </div>
+                </div>
+                <div class="tech-category">
+                    <h3>Calidad & Herramientas</h3>
                     <div class="tech-grid">
                         <span class="tech-badge"><span class="icon" style="background:#F05032"></span>Git</span>
                         <span class="tech-badge"><span class="icon" style="background:#e6edf3"></span>GitHub</span>
-                        <span class="tech-badge"><span class="icon" style="background:#007ACC"></span>VS Code</span>
-                        <span class="tech-badge"><span class="icon" style="background:#0078D4"></span>Azure DevOps</span>
+                        <span class="tech-badge"><span class="icon" style="background:#6E9F18"></span>Vitest</span>
+                        <span class="tech-badge"><span class="icon" style="background:#C21325"></span>Jest</span>
+                        <span class="tech-badge"><span class="icon" style="background:#362D59"></span>Sentry</span>
                         <span class="tech-badge"><span class="icon" style="background:#2496ED"></span>Docker</span>
+                        <span class="tech-badge"><span class="icon" style="background:#0078D4"></span>Azure DevOps</span>
+                        <span class="tech-badge"><span class="icon" style="background:#007ACC"></span>VS Code</span>
                     </div>
                 </div>
             </div>
@@ -210,6 +297,12 @@
                         <p class="experience-company">TUI</p>
                         <span class="experience-duration">4 años</span>
                         <p class="experience-desc">Desarrollo y mantenimiento de soluciones enterprise con .NET y servicios cloud en AWS. Arquitectura de microservicios y liderazgo técnico en proyectos de gran escala.</p>
+                        <div class="experience-tags">
+                            <span class="experience-tag">.NET</span>
+                            <span class="experience-tag">AWS</span>
+                            <span class="experience-tag">Microservicios</span>
+                            <span class="experience-tag">Liderazgo técnico</span>
+                        </div>
                     </div>
                 </div>
 
@@ -220,6 +313,10 @@
                         <p class="experience-company">FORWARD by Iturri</p>
                         <span class="experience-duration">1 año</span>
                         <p class="experience-desc">Ingeniería de software con tecnologías .NET, contribuyendo al desarrollo de soluciones innovadoras para el sector industrial.</p>
+                        <div class="experience-tags">
+                            <span class="experience-tag">.NET</span>
+                            <span class="experience-tag">Sector industrial</span>
+                        </div>
                     </div>
                 </div>
 
@@ -230,6 +327,11 @@
                         <p class="experience-company">Sequel Business Solutions Ltd</p>
                         <span class="experience-duration">2 años</span>
                         <p class="experience-desc">Desarrollo de aplicaciones empresariales con .NET, trabajando en soluciones de negocio a medida para clientes internacionales.</p>
+                        <div class="experience-tags">
+                            <span class="experience-tag">.NET</span>
+                            <span class="experience-tag">SQL Server</span>
+                            <span class="experience-tag">Clientes internacionales</span>
+                        </div>
                     </div>
                 </div>
 
@@ -240,6 +342,10 @@
                         <p class="experience-company">D.Med Healthcare</p>
                         <span class="experience-duration">2 años</span>
                         <p class="experience-desc">Desarrollo de software para el sector sanitario, creando soluciones tecnológicas que mejoran los procesos de atención médica.</p>
+                        <div class="experience-tags">
+                            <span class="experience-tag">.NET</span>
+                            <span class="experience-tag">Sector sanitario</span>
+                        </div>
                     </div>
                 </div>
 
@@ -250,6 +356,10 @@
                         <p class="experience-company">Avanade</p>
                         <span class="experience-duration">1 año</span>
                         <p class="experience-desc">Desarrollo de proyectos para una universidad privada, implementando soluciones con tecnologías Microsoft.</p>
+                        <div class="experience-tags">
+                            <span class="experience-tag">.NET</span>
+                            <span class="experience-tag">Ecosistema Microsoft</span>
+                        </div>
                     </div>
                 </div>
 
@@ -260,6 +370,10 @@
                         <p class="experience-company">Avanade</p>
                         <span class="experience-duration">1 año</span>
                         <p class="experience-desc">Inicio de carrera profesional en consultoría tecnológica, aprendiendo las bases del desarrollo empresarial con tecnologías .NET.</p>
+                        <div class="experience-tags">
+                            <span class="experience-tag">.NET</span>
+                            <span class="experience-tag">Consultoría</span>
+                        </div>
                     </div>
                 </div>
 
@@ -272,81 +386,197 @@
         <div class="fade-up">
             <p class="section-label">Proyectos</p>
             <h2 class="section-title">Lo que he construido</h2>
-            <div class="project-card">
-                <div class="project-header">
-                    <h3 class="project-name">CalmaKids</h3>
-                    <span class="project-type">App Mobile</span>
-                </div>
-                <p class="project-desc">
-                    Aplicación que ayuda a padres a encontrar películas y series tranquilas y apropiadas para niños,
-                    especialmente aquellos sensibles a estímulos sensoriales. Cuenta con un sistema propio de puntuación
-                    (<strong style="color:var(--accent-blue)">CalmaScore</strong>) que analiza el contenido audiovisual
-                    según múltiples métricas sensoriales.
-                </p>
-                <ul class="project-features">
-                    <li>CalmaScore: puntuación de calma 0-100</li>
-                    <li>Filtros avanzados por estímulos sensoriales</li>
-                    <li>Comparador de películas/series</li>
-                    <li>Sistema bilingüe (español/inglés)</li>
-                    <li>Autenticación y perfiles de usuario</li>
-                    <li>Sistema de comentarios y valoraciones</li>
-                    <li>Recomendaciones por momento del día</li>
-                    <li>Disponibilidad en plataformas de streaming</li>
-                </ul>
-                <div class="project-tech">
-                    <span class="project-tech-tag">React Native</span>
-                    <span class="project-tech-tag">Expo</span>
-                    <span class="project-tech-tag">TypeScript</span>
-                    <span class="project-tech-tag">AWS Lambda</span>
-                    <span class="project-tech-tag">DynamoDB</span>
-                    <span class="project-tech-tag">API Gateway</span>
-                    <span class="project-tech-tag">Cognito</span>
-                    <span class="project-tech-tag">S3</span>
-                    <span class="project-tech-tag">CloudFront</span>
-                    <span class="project-tech-tag">NativeWind</span>
-                </div>
-                <div class="project-links">
-                    <a href="https://play.google.com/store/apps/details?id=com.manuelocon91.calmakids" target="_blank" rel="noopener noreferrer">
-                        <img class="google-play-badge" src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Disponible en Google Play">
-                    </a>
-                </div>
-            </div>
+            <p class="section-intro">Dos productos propios llevados de la idea a la tienda: diseño, backend serverless, app móvil, monetización y mantenimiento en producción.</p>
+            <div class="projects-list">
 
-            <!-- Noche de Lobos -->
-            <div class="project-card" style="margin-top: 2rem;">
-                <div class="project-header">
-                    <h3 class="project-name">🐺 Noche de Lobos</h3>
-                    <span class="project-type">Juego Multijugador</span>
+                <!-- Noche de Lobos -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-name">🐺 Noche de Lobos</h3>
+                        <div class="project-badges">
+                            <span class="project-type">Juego multijugador · Full-stack</span>
+                            <span class="project-status live"><span class="status-dot"></span>En Google Play</span>
+                        </div>
+                    </div>
+                    <p class="project-desc">
+                        Juego de deducción social en tiempo real para hasta 15 jugadores: los lobos se esconden entre los aldeanos
+                        y cada noche eligen víctima. El reto técnico está en el motor de juego —25 roles jugables cuyas habilidades
+                        interactúan entre sí— y en los <strong style="color:var(--accent-blue)">bots con IA</strong> (Google Gemini) que
+                        debaten, mienten y votan con <strong style="color:var(--accent-blue)">memoria conversacional</strong>, de forma
+                        que nunca hay que esperar a que se llene la sala.
+                    </p>
+                    <div class="project-metrics">
+                        <div class="project-metric">
+                            <div class="project-metric-value">25</div>
+                            <div class="project-metric-label">roles jugables</div>
+                        </div>
+                        <div class="project-metric">
+                            <div class="project-metric-value">15</div>
+                            <div class="project-metric-label">jugadores/sala</div>
+                        </div>
+                        <div class="project-metric">
+                            <div class="project-metric-value">31</div>
+                            <div class="project-metric-label">logros</div>
+                        </div>
+                        <div class="project-metric">
+                            <div class="project-metric-value">+950</div>
+                            <div class="project-metric-label">tests</div>
+                        </div>
+                    </div>
+                    <p class="project-subtitle">Funcionalidades</p>
+                    <ul class="project-features">
+                        <li>Partidas en tiempo real sobre API Gateway WebSocket</li>
+                        <li>Matchmaking público con relleno progresivo de bots</li>
+                        <li>Salas privadas con código y roles configurables</li>
+                        <li>25 roles jugables (11 premium) y 6 vías de victoria</li>
+                        <li>Bots IA con 5 personalidades y memoria conversacional</li>
+                        <li>Progresión: 10 niveles, XP, monedas y 31 logros</li>
+                        <li>Tienda de roles con desbloqueo directo o gachapón</li>
+                        <li>Estadísticas post-partida y 7 trofeos por partida</li>
+                        <li>Chat en 3 pestañas: chat, roles y crónica de sucesos</li>
+                        <li>Amigos, invitaciones y perfil con avatares</li>
+                        <li>Reconexión con margen de 180 s y control de inactividad</li>
+                        <li>Bilingüe ES/EN, música por fase, sonido y haptics</li>
+                    </ul>
+                    <p class="project-subtitle">Arquitectura y detalles técnicos</p>
+                    <div class="project-arch">
+                        <div class="arch-block">
+                            <h4>Motor de juego server-authoritative</h4>
+                            <p>Toda la lógica vive en un motor puro e inmutable en el servidor; el cliente solo envía intención, así que no queda superficie para hacer trampas. Arquitectura hexagonal con puertos y adaptadores, y escritura en DynamoDB con optimistic locking y reintentos.</p>
+                        </div>
+                        <div class="arch-block">
+                            <h4>Infraestructura AWS</h4>
+                            <p>8 Lambdas sobre Node.js 22, WebSocket API y REST API, single-table design en DynamoDB, matchmaking con write sharding en 10 particiones y 4 colas SQS que aíslan turnos de bots, chat y timeouts de fase para que la latencia del LLM no frene la partida.</p>
+                        </div>
+                        <div class="arch-block">
+                            <h4>IA de bots con memoria</h4>
+                            <p>Gemini con tres tiers de uso (estrategia, chat y logística) y memoria RAG: cada mensaje se vectoriza con embeddings y se recuperan por similitud coseno los recuerdos relevantes. Un extractor de conocimiento inyecta en el prompt solo lo que ese rol podría saber.</p>
+                        </div>
+                        <div class="arch-block">
+                            <h4>Calidad y observabilidad</h4>
+                            <p>Más de 950 tests automatizados en 75 suites (Vitest en backend, Jest en el cliente) con cobertura mínima obligatoria del 90 % en el motor de juego, más X-Ray, alarmas de CloudWatch con notificación por SNS y Sentry en la app.</p>
+                        </div>
+                    </div>
+                    <div class="project-tech">
+                        <span class="project-tech-tag">React Native</span>
+                        <span class="project-tech-tag">Expo SDK 54</span>
+                        <span class="project-tech-tag">TypeScript</span>
+                        <span class="project-tech-tag">Node.js 22</span>
+                        <span class="project-tech-tag">AWS Lambda</span>
+                        <span class="project-tech-tag">API Gateway WebSocket</span>
+                        <span class="project-tech-tag">DynamoDB</span>
+                        <span class="project-tech-tag">SQS</span>
+                        <span class="project-tech-tag">Cognito</span>
+                        <span class="project-tech-tag">Google Gemini</span>
+                        <span class="project-tech-tag">RAG / Embeddings</span>
+                        <span class="project-tech-tag">Clean Architecture</span>
+                        <span class="project-tech-tag">Vitest / Jest</span>
+                        <span class="project-tech-tag">Sentry</span>
+                        <span class="project-tech-tag">AWS SAM</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://play.google.com/store/apps/details?id=com.manuelocon91.nochedelobos" target="_blank" rel="noopener noreferrer" aria-label="Descargar Noche de Lobos en Google Play">
+                            <img class="google-play-badge" src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Disponible en Google Play">
+                        </a>
+                        <a href="https://manuelocon.github.io/Portfolio/NocheDeLobos/privacy-policy/" class="project-link-text" target="_blank" rel="noopener noreferrer">Política de privacidad</a>
+                    </div>
                 </div>
-                <p class="project-desc">
-                    Juego de deducción social multijugador en tiempo real. Los jugadores deben descubrir quiénes son los lobos 
-                    ocultos entre los aldeanos antes de que sea demasiado tarde. Incluye <strong style="color:var(--accent-blue)">bots con IA</strong> 
-                    que permiten jugar partidas incluso con pocos jugadores humanos, generando respuestas y estrategias dinámicas.
-                </p>
-                <ul class="project-features">
-                    <li>Partidas en tiempo real via WebSocket</li>
-                    <li>Matchmaking público con llenado automático</li>
-                    <li>Salas privadas con código</li>
-                    <li>5 roles únicos: Vidente, Bruja, Cazador...</li>
-                    <li>Bots IA con personalidad (Google Gemini)</li>
-                    <li>Chat en tiempo real por fase</li>
-                    <li>Sistema de día/noche con música ambiente</li>
-                    <li>Efectos de sonido y vibración háptica</li>
-                </ul>
-                <div class="project-tech">
-                    <span class="project-tech-tag">React Native</span>
-                    <span class="project-tech-tag">Expo</span>
-                    <span class="project-tech-tag">TypeScript</span>
-                    <span class="project-tech-tag">AWS Lambda</span>
-                    <span class="project-tech-tag">DynamoDB</span>
-                    <span class="project-tech-tag">API Gateway WebSocket</span>
-                    <span class="project-tech-tag">SQS</span>
-                    <span class="project-tech-tag">Google Gemini AI</span>
-                    <span class="project-tech-tag">NativeWind</span>
+
+                <!-- CalmaKids -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-name">🐨 CalmaKids</h3>
+                        <div class="project-badges">
+                            <span class="project-type">App mobile · Full-stack</span>
+                            <span class="project-status live"><span class="status-dot"></span>En Google Play</span>
+                            <span class="project-status review"><span class="status-dot"></span>iOS en revisión</span>
+                        </div>
+                    </div>
+                    <p class="project-desc">
+                        App que ayuda a los padres a elegir películas y series infantiles realmente tranquilas, pensada para niños
+                        sensibles a los estímulos y para la rutina de antes de dormir. Su motor propio,
+                        <strong style="color:var(--accent-blue)">CalmaScore</strong>, puntúa cada título de 0 a 100 combinando
+                        <strong style="color:var(--accent-blue)">6 métricas sensoriales ponderadas</strong>: violencia, nivel de ruido,
+                        ritmo de montaje (segundos por plano), destellos, picos de volumen y carga visual en pantalla.
+                    </p>
+                    <div class="project-metrics">
+                        <div class="project-metric">
+                            <div class="project-metric-value">0-100</div>
+                            <div class="project-metric-label">CalmaScore</div>
+                        </div>
+                        <div class="project-metric">
+                            <div class="project-metric-value">6</div>
+                            <div class="project-metric-label">métricas sensoriales</div>
+                        </div>
+                        <div class="project-metric">
+                            <div class="project-metric-value">8</div>
+                            <div class="project-metric-label">plataformas de streaming</div>
+                        </div>
+                        <div class="project-metric">
+                            <div class="project-metric-value">v1.2</div>
+                            <div class="project-metric-label">en producción</div>
+                        </div>
+                    </div>
+                    <p class="project-subtitle">Funcionalidades</p>
+                    <ul class="project-features">
+                        <li>CalmaScore de 0 a 100 con veredicto y guía parental</li>
+                        <li>Películas y series con edad recomendada en 7 rangos</li>
+                        <li>Filtros sensoriales, por edad y por tipo de contenido</li>
+                        <li>Comparador de dos títulos con sus métricas enfrentadas</li>
+                        <li>«Destacados esta noche»: selección diaria de los más calmados</li>
+                        <li>Mejor momento del día para ver cada título</li>
+                        <li>Disponibilidad en 8 plataformas de streaming</li>
+                        <li>Favoritos y vistos sincronizados en la cuenta</li>
+                        <li>Reseñas de otras familias con valoración de 0 a 5</li>
+                        <li>Reporte de contenido y avisos de contenido sensible</li>
+                        <li>Búsqueda por título y contenido relacionado</li>
+                        <li>Bilingüe ES/EN con títulos y fichas localizadas</li>
+                    </ul>
+                    <p class="project-subtitle">Arquitectura y detalles técnicos</p>
+                    <div class="project-arch">
+                        <div class="arch-block">
+                            <h4>Backend serverless</h4>
+                            <p>6 Lambdas sobre Node.js 22 y API Gateway REST, 6 tablas DynamoDB on-demand, búsqueda indexada con GSI, agregación de valoraciones event-driven con DynamoDB Streams, WAF con rate limiting y pósters servidos por CloudFront sobre S3.</p>
+                        </div>
+                        <div class="arch-block">
+                            <h4>Autenticación</h4>
+                            <p>Cognito con email y contraseña, federación con Google y Sign in with Apple nativo, verificando el JWT contra el JWKS de Apple en una Lambda. La sesión se guarda cifrada en el dispositivo y se refresca de forma automática.</p>
+                        </div>
+                        <div class="arch-block">
+                            <h4>App móvil</h4>
+                            <p>Expo SDK 54 con la New Architecture de React Native, catálogo paginado con FlashList, imágenes con caché en disco vía CDN, layout responsivo de 1 a 3 columnas más modo horizontal en el comparador y cuatro config plugins nativos propios para Android.</p>
+                        </div>
+                        <div class="arch-block">
+                            <h4>Monetización responsable</h4>
+                            <p>AdMob con anuncios nativos e intersticiales integrados en el flujo, configurados como contenido dirigido a menores (rating G y consentimiento de menores) y con App Tracking Transparency en iOS antes de inicializar los anuncios.</p>
+                        </div>
+                    </div>
+                    <div class="project-tech">
+                        <span class="project-tech-tag">React Native</span>
+                        <span class="project-tech-tag">Expo SDK 54</span>
+                        <span class="project-tech-tag">TypeScript</span>
+                        <span class="project-tech-tag">NativeWind</span>
+                        <span class="project-tech-tag">FlashList</span>
+                        <span class="project-tech-tag">AWS Lambda</span>
+                        <span class="project-tech-tag">DynamoDB</span>
+                        <span class="project-tech-tag">DynamoDB Streams</span>
+                        <span class="project-tech-tag">API Gateway</span>
+                        <span class="project-tech-tag">Cognito</span>
+                        <span class="project-tech-tag">Sign in with Apple</span>
+                        <span class="project-tech-tag">S3 & CloudFront</span>
+                        <span class="project-tech-tag">AWS WAF</span>
+                        <span class="project-tech-tag">AdMob</span>
+                        <span class="project-tech-tag">AWS SAM</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://play.google.com/store/apps/details?id=com.manuelocon91.calmakids" target="_blank" rel="noopener noreferrer" aria-label="Descargar CalmaKids en Google Play">
+                            <img class="google-play-badge" src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Disponible en Google Play">
+                        </a>
+                        <span class="project-note">Próximamente en la App Store</span>
+                        <a href="https://manuelocon.github.io/Portfolio/CalmaKids/privacy-policy/" class="project-link-text" target="_blank" rel="noopener noreferrer">Política de privacidad</a>
+                    </div>
                 </div>
-                <div class="project-links">
-                    <span style="color: var(--text-secondary); font-size: 0.9rem; font-style: italic;">Próximamente en Google Play</span>
-                </div>
+
             </div>
         </div>
     </section>
@@ -360,9 +590,17 @@
                 Si tienes un proyecto en mente, quieres colaborar o simplemente quieres conectar, no dudes en contactarme.
             </p>
             <div class="contact-links">
+                <a href="mailto:manucreatingsoftware@gmail.com" class="contact-link">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
+                    Email
+                </a>
                 <a href="https://github.com/Manuelocon" target="_blank" rel="noopener noreferrer" class="contact-link">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
                     GitHub
+                </a>
+                <a href="https://play.google.com/store/apps/developer?id=manucreatingsoftware" target="_blank" rel="noopener noreferrer" class="contact-link">
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.6 1.8a1.5 1.5 0 0 0-.45 1.07v18.26c0 .42.17.8.45 1.07l9.2-10.2L3.6 1.8zm10.3 9.4 2.86-3.17-9.9-5.62a1.2 1.2 0 0 0-.3-.12l7.34 8.9zm0 1.6-7.34 8.9c.1-.02.2-.06.3-.12l9.9-5.62-2.86-3.16zm4.05-4.32 2.55 1.45c.98.56.98 1.98 0 2.54l-2.55 1.45-3.1-3.44L18 8.48z"/></svg>
+                    Mis apps
                 </a>
             </div>
         </div>
@@ -383,21 +621,26 @@
         const toggle = document.getElementById('navToggle');
         const links = document.getElementById('navLinks');
         toggle.addEventListener('click', () => {
-            links.classList.toggle('open');
-            toggle.classList.toggle('active');
+            const open = links.classList.toggle('open');
+            toggle.classList.toggle('active', open);
+            toggle.setAttribute('aria-expanded', String(open));
+            toggle.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
         });
 
         links.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 links.classList.remove('open');
                 toggle.classList.remove('active');
+                toggle.setAttribute('aria-expanded', 'false');
+                toggle.setAttribute('aria-label', 'Abrir menú');
             });
         });
 
-        const observer = new IntersectionObserver((entries) => {
+        const observer = new IntersectionObserver((entries, obs) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
+                    obs.unobserve(entry.target);
                 }
             });
         }, { threshold: 0.15 });
@@ -406,8 +649,9 @@
 
         const sections = document.querySelectorAll('section[id]');
         const navAnchors = document.querySelectorAll('.nav-links a');
+        let ticking = false;
 
-        window.addEventListener('scroll', () => {
+        function updateActiveLink() {
             const scrollY = window.scrollY + 120;
             sections.forEach(section => {
                 const top = section.offsetTop;
@@ -415,14 +659,21 @@
                 const id = section.getAttribute('id');
                 if (scrollY >= top && scrollY < top + height) {
                     navAnchors.forEach(a => {
-                        a.classList.remove('active');
-                        if (a.getAttribute('href') === '#' + id) {
-                            a.classList.add('active');
-                        }
+                        a.classList.toggle('active', a.getAttribute('href') === '#' + id);
                     });
                 }
             });
-        });
+            ticking = false;
+        }
+
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                ticking = true;
+                requestAnimationFrame(updateActiveLink);
+            }
+        }, { passive: true });
+
+        updateActiveLink();
     </script>
 </body>
 </html>
